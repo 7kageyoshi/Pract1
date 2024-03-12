@@ -1,31 +1,29 @@
 package characters;
 
 public class Peasant extends Character {
-    protected int farmingLevel;
-    protected int farmingExperience;
-    protected boolean isWorking;
+    protected int cropYield;
+    protected int toolsDurability;
 
-    public Peasant() {
-        super();
-        this.farmingLevel = 1;
-        this.farmingExperience = 0;
-        this.isWorking = false;
+    public Peasant(String name, Coordinates coordinates) {
+        super(coordinates);
+        this.cropYield = 10;
+        this.toolsDurability = 100;
     }
-
 
     @Override
     public void attack() {
-        System.out.println("Крестьянин атакует!");
+        System.out.println("Крестьянин атакует косой!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Крестьянин защищается!");
+        System.out.println("Крестьянин прячется за стогом сена!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Крестьянин использует специальную способность!");
+        System.out.println("Крестьянин улучшает качество посевов!");
+        this.cropYield += 5;
     }
 
     @Override
@@ -33,4 +31,5 @@ public class Peasant extends Character {
         return "Крестьянин";
     }
 }
+
 

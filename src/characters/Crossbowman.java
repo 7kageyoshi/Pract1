@@ -1,51 +1,49 @@
 package characters;
 
 public class Crossbowman extends Character {
+    protected int accuracy;
+    protected int range;
 
-    protected int crossbowDamage;
-    protected int reloadTime;
-    protected boolean isReloading;
-
-    public Crossbowman() {
-        super();
-        this.crossbowDamage = 70;
-        this.reloadTime = 5;
-        this.isReloading = false;
+    public Crossbowman(String name, Coordinates coordinates) {
+        super(coordinates);
+        this.accuracy = 80;
+        this.range = 10;
     }
 
     @Override
     public void attack() {
-        if (!isReloading) {
-            System.out.println("Арбалетчик выстреливает из арбалета!");
-
-            isReloading = true;
-            reloadCrossbow();
-        } else {
-            System.out.println("Арбалетчик перезаряжает арбалет...");
-        }
-    }
-
-    private void reloadCrossbow() {
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        isReloading = false;
-                    }
-                },
-                reloadTime * 1000
-        );
+        System.out.println("Арбалетчик выстреливает из арбалета!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Арбалетчик уклоняется от атаки!");
+        System.out.println("Арбалетчик отступает под прикрытием!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Арбалетчик переключается на более мощные болты!");
-        this.crossbowDamage += 20;
+        System.out.println("Арбалетчик прицельно стреляет во врага!");
+    }
+
+    public Character findNearestEnemy(Character[] enemies) {
+        Character nearestEnemy = null;
+        double shortestDistance = Double.MAX_VALUE;
+
+        for (Character enemy : enemies) {
+            double distance = calculateDistance(enemy.getCoordinates());
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
+    }
+
+    private double calculateDistance(Coordinates enemyCoordinates) {
+        int xDistance = Math.abs(this.coordinates.getX() - enemyCoordinates.getX());
+        int yDistance = Math.abs(this.coordinates.getY() - enemyCoordinates.getY());
+        return Math.sqrt(xDistance * xDistance + yDistance * yDistance);
     }
 
     @Override
@@ -53,4 +51,6 @@ public class Crossbowman extends Character {
         return "Арбалетчик";
     }
 }
+
+
 

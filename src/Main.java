@@ -6,26 +6,46 @@ import characters.Wizard;
 import characters.Warrior;
 import characters.Crossbowman;
 import characters.Monk;
+import characters.Coordinates;
+import java.util.Random;
 
-
-public class Main {
+public class    Main {
     public static void main(String[] args) {
-        Character peasant = new Peasant();
-        Character robber = new Robber();
-        Character sniper = new Sniper();
-        Character wizard = new Wizard();
-        Character warrior = new Warrior();
-        Character crossbowman = new Crossbowman();
-        Character monk = new Monk();
+        Coordinates coordinatesLeft = new Coordinates(0, 0);
+        Coordinates coordinatesRight = new Coordinates(9, 9);
 
-        System.out.println(peasant.toString());
-        System.out.println(robber.toString());
-        System.out.println(sniper.toString());
-        System.out.println(wizard.toString());
-        System.out.println(warrior.toString());
-        System.out.println(crossbowman.toString());
-        System.out.println(monk.toString());
+        Character[] teamLeft = {
+                new Peasant(generateRandomName(), coordinatesLeft),
+                new Wizard(generateRandomName(), coordinatesLeft),
+                new Crossbowman(generateRandomName(), coordinatesLeft),
+                new Warrior(generateRandomName(), coordinatesLeft)
+        };
 
+        Character[] teamRight = {
+                new Peasant(generateRandomName(), coordinatesRight),
+                new Sniper(generateRandomName(), coordinatesRight),
+                new Monk(generateRandomName(), coordinatesRight),
+                new Robber(generateRandomName(), coordinatesRight)
+        };
 
+        System.out.println("Первая команда:");
+        for (Character character : teamLeft) {
+            System.out.println(character.getName() + " " + character.getCoordinates());
+        }
+
+        System.out.println("\nВторая команда:");
+        for (Character character : teamRight) {
+            System.out.println(character.getName() + " " + character.getCoordinates());
+        }
+    }
+
+    private static String generateRandomName() {
+        String[] names = {"Иван", "Петр", "Александр", "Михаил", "Сергей", "Андрей", "Алексей"};
+        Random random = new Random();
+        return names[random.nextInt(names.length)];
     }
 }
+
+
+
+

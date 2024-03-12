@@ -1,31 +1,29 @@
 package characters;
 
 public class Sniper extends Character {
-    protected int accuracy;
-    protected int range;
-    protected boolean isHidden;
+    protected int precision;
+    protected int camouflage;
 
-    public Sniper() {
-        super();
-        this.accuracy = 90;
-        this.range = 1000;
-        this.isHidden = false;
+    public Sniper(String name, Coordinates coordinates) {
+        super(coordinates);
+        this.precision = 90;
+        this.camouflage = 60;
     }
 
     @Override
     public void attack() {
-        System.out.println("Снайпер наносит точный выстрел!");
+        System.out.println("Снайпер стреляет точно!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Снайпер прячется от атаки!");
+        System.out.println("Снайпер использует маскировку для защиты!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Снайпер становится невидимым!");
-        this.isHidden = true;
+        System.out.println("Снайпер неразличим в окружающей среде!");
+        this.camouflage += 10;
     }
 
     @Override
@@ -33,4 +31,5 @@ public class Sniper extends Character {
         return "Снайпер";
     }
 }
+
 

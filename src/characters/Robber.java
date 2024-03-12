@@ -2,30 +2,28 @@ package characters;
 
 public class Robber extends Character {
     protected int agility;
-    protected int stealthLevel;
-    protected boolean isInvisible;
+    protected int stealth;
 
-    public Robber() {
-        super();
-        this.agility = 10;
-        this.stealthLevel = 5;
-        this.isInvisible = false;
+    public Robber(String name, Coordinates coordinates) {
+        super(coordinates);
+        this.agility = 70;
+        this.stealth = 80;
     }
 
     @Override
     public void attack() {
-        System.out.println("Разбойник наносит удар!");
+        System.out.println("Разбойник наносит быстрый удар!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Разбойник уклоняется от атаки!");
+        System.out.println("Разбойник использует скрытность для защиты!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Разбойник становится невидимым!");
-        this.isInvisible = true;
+        System.out.println("Разбойник исчезает из виду!");
+        this.stealth += 10;
     }
 
     @Override
@@ -33,3 +31,4 @@ public class Robber extends Character {
         return "Разбойник";
     }
 }
+

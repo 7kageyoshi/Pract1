@@ -3,30 +3,27 @@ package characters;
 public class Wizard extends Character {
     protected int mana;
     protected int spellPower;
-    protected boolean isCasting;
 
-    public Wizard() {
-        super();
+    public Wizard(String name, Coordinates coordinates) {
+        super(coordinates);
         this.mana = 100;
         this.spellPower = 50;
-        this.isCasting = false;
     }
 
     @Override
     public void attack() {
-        System.out.println("Колдун использует магический заклинание!");
+        System.out.println("Колдун бросает заклинание!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Колдун создает щит магии!");
-
+        System.out.println("Колдун создает магический щит!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Колдун начинает кастовать мощное заклинание!");
-        this.isCasting = true;
+        System.out.println("Колдун восстанавливает ману!");
+        this.mana += 20;
     }
 
     @Override
@@ -34,4 +31,5 @@ public class Wizard extends Character {
         return "Колдун";
     }
 }
+
 

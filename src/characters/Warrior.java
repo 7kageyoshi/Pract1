@@ -1,35 +1,35 @@
 package characters;
 
 public class Warrior extends Character {
-    protected int armor;
-    protected int stamina;
-    protected boolean isBlocking;
+    protected int bravery;
+    protected int weaponDamage;
 
-    public Warrior() {
-        super();
-        this.armor = 50;
-        this.stamina = 100;
-        this.isBlocking = false;
+    public Warrior(String name, Coordinates coordinates) {
+        super(coordinates);
+        this.bravery = 80;
+        this.weaponDamage = 20;
     }
 
     @Override
     public void attack() {
-        System.out.println("Копейщик атакует мощным ударом!");
+        System.out.println("Воин наносит мощный удар!");
     }
 
     @Override
     public void defend() {
-        System.out.println("Копейщик поднимает щит для защиты!");
+        System.out.println("Воин вступает в бой!");
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Копейщик активирует режим берсерка!");
+        System.out.println("Воин вызывает к себе дополнительную силу!");
+        this.bravery += 5;
     }
 
     @Override
     public String toString() {
-        return "Копейщик";
+        return "Воин";
     }
 }
+
 
