@@ -1,6 +1,6 @@
 package characters;
 
-public class Sniper extends Character {
+public class Sniper extends Character implements Steppable {
     protected int precision;
     protected int camouflage;
 
@@ -8,6 +8,7 @@ public class Sniper extends Character {
         super(coordinates);
         this.precision = 90;
         this.camouflage = 60;
+        this.initiative = 2;
     }
 
     @Override
@@ -27,9 +28,15 @@ public class Sniper extends Character {
     }
 
     @Override
+    public void step() {
+        System.out.println("Снайпер двигается к лучшей позиции.");
+    }
+
+    @Override
     public String toString() {
         return "Снайпер";
     }
 }
+
 
 

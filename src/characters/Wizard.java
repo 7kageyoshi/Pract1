@@ -1,6 +1,6 @@
 package characters;
 
-public class Wizard extends Character {
+public class Wizard extends Character implements Steppable {
     protected int mana;
     protected int spellPower;
 
@@ -8,6 +8,7 @@ public class Wizard extends Character {
         super(coordinates);
         this.mana = 100;
         this.spellPower = 50;
+        this.initiative = 1;
     }
 
     @Override
@@ -27,9 +28,13 @@ public class Wizard extends Character {
     }
 
     @Override
+    public void step() {
+        System.out.println("Ход Колдуна");
+    }
+
+    @Override
     public String toString() {
         return "Колдун";
     }
 }
-
 

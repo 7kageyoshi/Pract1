@@ -1,6 +1,6 @@
 package characters;
 
-public class Warrior extends Character {
+public class Warrior extends Character implements Steppable {
     protected int bravery;
     protected int weaponDamage;
 
@@ -8,6 +8,7 @@ public class Warrior extends Character {
         super(coordinates);
         this.bravery = 80;
         this.weaponDamage = 20;
+        this.initiative = 2;
     }
 
     @Override
@@ -27,9 +28,15 @@ public class Warrior extends Character {
     }
 
     @Override
+    public void step() {
+        System.out.println("Воин делает шаг.");
+    }
+
+    @Override
     public String toString() {
         return "Воин";
     }
 }
+
 
 

@@ -1,6 +1,6 @@
 package characters;
 
-public class Monk extends Character {
+public class Monk extends Character implements Steppable {
     protected int meditationLevel;
     protected int wisdom;
 
@@ -8,6 +8,7 @@ public class Monk extends Character {
         super(coordinates);
         this.meditationLevel = 5;
         this.wisdom = 100;
+        this.initiative = 2;
     }
 
     @Override
@@ -27,9 +28,15 @@ public class Monk extends Character {
     }
 
     @Override
+    public void step() {
+        System.out.println("Монах идет к месту молитвы.");
+    }
+
+    @Override
     public String toString() {
         return "Монах";
     }
 }
+
 
 

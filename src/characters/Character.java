@@ -2,11 +2,12 @@ package characters;
 
 import java.util.Random;
 
-public abstract class Character {
+public abstract class Character implements Steppable {
     protected String name;
     protected int health;
     protected int strength;
     protected Coordinates coordinates;
+    protected int initiative;
 
     public Character(Coordinates coordinates) {
         this.name = generateRandomName();
@@ -14,7 +15,6 @@ public abstract class Character {
         this.strength = 10;
         this.coordinates = coordinates;
     }
-
 
     private static String generateRandomName() {
         String[] names = {"Иван", "Петр", "Александр", "Михаил", "Сергей", "Андрей", "Алексей"};
@@ -29,15 +29,27 @@ public abstract class Character {
     public String getName() {
         return name;
     }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
     public abstract void attack();
     public abstract void defend();
     public abstract void useSpecialAbility();
 
     @Override
+    public void step() {
+    }
+
+    @Override
     public String toString() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + " " + name;
     }
 }
+
+
+
 
 
 

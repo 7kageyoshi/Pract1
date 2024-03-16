@@ -1,6 +1,6 @@
 package characters;
 
-public class Peasant extends Character {
+public class Peasant extends Character implements Steppable {
     protected int cropYield;
     protected int toolsDurability;
 
@@ -8,6 +8,7 @@ public class Peasant extends Character {
         super(coordinates);
         this.cropYield = 10;
         this.toolsDurability = 100;
+        this.initiative = 0;
     }
 
     @Override
@@ -27,9 +28,16 @@ public class Peasant extends Character {
     }
 
     @Override
+    public void step() {
+        System.out.println("Крестьянин идет на поле для работы.");
+    }
+
+    @Override
     public String toString() {
         return "Крестьянин";
     }
 }
+
+
 
 

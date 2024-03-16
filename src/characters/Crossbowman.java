@@ -3,11 +3,14 @@ package characters;
 public class Crossbowman extends Character {
     protected int accuracy;
     protected int range;
+    protected int arrows;
 
     public Crossbowman(String name, Coordinates coordinates) {
         super(coordinates);
         this.accuracy = 80;
         this.range = 10;
+        this.arrows = 20;
+        this.initiative = 3;
     }
 
     @Override
@@ -25,19 +28,24 @@ public class Crossbowman extends Character {
         System.out.println("Арбалетчик прицельно стреляет во врага!");
     }
 
-    public Character findNearestEnemy(Character[] enemies) {
-        Character nearestEnemy = null;
-        double shortestDistance = Double.MAX_VALUE;
-
-        for (Character enemy : enemies) {
-            double distance = calculateDistance(enemy.getCoordinates());
-            if (distance < shortestDistance) {
-                shortestDistance = distance;
-                nearestEnemy = enemy;
-            }
+    @Override
+    public void step() {
+        if (health <= 0 || arrows <= 0) {
+            return;
         }
 
-        return nearestEnemy;
+        Character nearestEnemy = findNearestEnemy();
+        if (nearestEnemy != null) {
+            shoot(nearestEnemy);
+        }
+    }
+
+    private Character findNearestEnemy() {
+        return null;
+    }
+
+    private void shoot(Character enemy) {
+        arrows--;
     }
 
     private double calculateDistance(Coordinates enemyCoordinates) {
@@ -51,6 +59,7 @@ public class Crossbowman extends Character {
         return "Арбалетчик";
     }
 }
+
 
 
 
