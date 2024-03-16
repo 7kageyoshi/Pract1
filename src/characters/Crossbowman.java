@@ -37,6 +37,8 @@ public class Crossbowman extends Character {
         Character nearestEnemy = findNearestEnemy();
         if (nearestEnemy != null) {
             shoot(nearestEnemy);
+        } else {
+            System.out.println("Арбалетчик двигается к лучшей позиции.");
         }
     }
 
@@ -45,6 +47,7 @@ public class Crossbowman extends Character {
     }
 
     private void shoot(Character enemy) {
+        System.out.println("Арбалетчик стреляет во врага!");
         arrows--;
     }
 
