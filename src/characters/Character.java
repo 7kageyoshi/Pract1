@@ -46,6 +46,15 @@ public abstract class Character implements Steppable {
     public String toString() {
         return this.getClass().getSimpleName() + " " + name;
     }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            health = 0;
+            System.out.println(name + " был повержен!");
+        }
+    }
+
 }
 
 

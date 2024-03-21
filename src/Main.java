@@ -10,6 +10,12 @@ import characters.Coordinates;
 import java.util.Random;
 import java.util.Arrays;
 import java.util.Comparator;
+import characters.Infantry;
+import java.util.Random;
+
+import characters.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,18 +23,21 @@ public class Main {
         Coordinates coordinatesRight = new Coordinates(9, 9);
 
         Character[] teamLeft = {
-                new Peasant(generateRandomName(), coordinatesLeft),
-                new Wizard(generateRandomName(), coordinatesLeft),
+                new Warrior(generateRandomName(), coordinatesLeft),
+                new Robber(generateRandomName(), coordinatesLeft),
                 new Crossbowman(generateRandomName(), coordinatesLeft),
-                new Warrior(generateRandomName(), coordinatesLeft)
+                new Peasant(generateRandomName(), coordinatesLeft),
+                new Wizard(generateRandomName(), coordinatesLeft)
         };
 
         Character[] teamRight = {
+                new Warrior(generateRandomName(), coordinatesRight),
+                new Robber(generateRandomName(), coordinatesRight),
+                new Crossbowman(generateRandomName(), coordinatesRight),
                 new Peasant(generateRandomName(), coordinatesRight),
-                new Sniper(generateRandomName(), coordinatesRight),
-                new Monk(generateRandomName(), coordinatesRight),
-                new Robber(generateRandomName(), coordinatesRight)
+                new Wizard(generateRandomName(), coordinatesRight)
         };
+
 
         Arrays.sort(teamLeft, Comparator.comparingInt(Character::getInitiative).reversed());
         Arrays.sort(teamRight, Comparator.comparingInt(Character::getInitiative).reversed());
@@ -54,6 +63,9 @@ public class Main {
 
     private static String generateRandomName() {
         String[] names = {"Иван", "Петр", "Александр", "Михаил", "Сергей", "Андрей", "Алексей"};
-        return names[(int) (Math.random() * names.length)];
+        Random random = new Random();
+        return names[random.nextInt(names.length)];
     }
 }
+
+
